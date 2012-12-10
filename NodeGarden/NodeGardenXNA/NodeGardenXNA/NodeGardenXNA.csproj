@@ -50,7 +50,7 @@
   <ItemGroup>
     <Reference Include="C3.XNA.Primitives2D, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Users\Ian\Downloads\C3.XNA.Primitives2D.r12\Primitives2D\bin\Windows Phone\Release\C3.XNA.Primitives2D.dll</HintPath>
+      <HintPath>..\NodeGardenXNALib\C3.XNA.Primitives2D.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
