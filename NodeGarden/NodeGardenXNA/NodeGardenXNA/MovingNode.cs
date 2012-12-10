@@ -45,6 +45,8 @@ namespace NodeGardenXNA
 
         private SoundEffect soundEffect;
 
+        private List<SoundEffect> soundEffects;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MovingNode"/> class.
         /// </summary>
@@ -68,6 +70,25 @@ namespace NodeGardenXNA
             this.Texture = circleTex;
 
             ripples = new List<Ripple>();
+            soundEffects = new List<SoundEffect>
+            {
+                (Application.Current as App).Content.Load<SoundEffect>("tweet1"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet2"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet3"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet4"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet5"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet6"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet7"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet8"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet9"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet10"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet11"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet12"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet13"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet14"),
+                (Application.Current as App).Content.Load<SoundEffect>("tweet15")
+            };
+             
             soundEffect = (Application.Current as App).Content.Load<SoundEffect>("slowbullet");
 
             AccentColour = (System.Windows.Media.Color)Application.Current.Resources["PhoneAccentColor"];
@@ -177,7 +198,8 @@ namespace NodeGardenXNA
                 ripples.Add(ripple);
             }
 
-            soundEffect.Play();
+            int randomSoundEffectIndex = Rand.Next(15);
+            soundEffects[randomSoundEffectIndex].Play();
         }
 
         protected Microsoft.Xna.Framework.Color GetXnaColour(System.Windows.Media.Color color)

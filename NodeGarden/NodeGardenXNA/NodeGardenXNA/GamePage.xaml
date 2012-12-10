@@ -62,12 +62,12 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <RadioButton Content="UDP comms" x:Name="UdpComms" IsChecked="True" />
-                    <RadioButton Content="Web comms" x:Name="WebComms" Grid.Column="1" />
+                    <RadioButton Content="UDP comms" x:Name="UdpComms"  />
+                    <RadioButton Content="Web comms" x:Name="WebComms" Grid.Column="1" IsChecked="True" />
                 </Grid>
 
-                <CheckBox x:Name="EnableShakeDetection" IsChecked="False" Content="Enable Shake Detection" />
-                <CheckBox x:Name="EnableNoiseDetection" IsChecked="False" Content="Enable Noise Detection" />
+                <CheckBox x:Name="EnableShakeDetection" IsChecked="True" Content="Enable Shake Detection" />
+                <CheckBox x:Name="EnableNoiseDetection" IsChecked="True" Content="Enable Noise Detection" />
 
                 <TextBlock Text="v w.x.y.z" Margin="12,24" x:Name="DisplayedVersionNumber" />
             </StackPanel>
