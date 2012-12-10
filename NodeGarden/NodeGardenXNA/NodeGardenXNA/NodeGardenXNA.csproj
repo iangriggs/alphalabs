@@ -48,6 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C3.XNA.Primitives2D, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Users\Ian\Downloads\C3.XNA.Primitives2D.r12\Primitives2D\bin\Windows Phone\Release\C3.XNA.Primitives2D.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Xna.Framework" />
@@ -105,10 +109,6 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Users\Ian\Downloads\C3.XNA.Primitives2D.r12\Primitives2D\Primitives2DWP7.csproj">
-      <Project>{3D2A19A1-D632-4AC0-8B49-0E5C0BDBBB8B}</Project>
-      <Name>Primitives2DWP7</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\NodeGardenLib\NodeGardenLib.csproj">
       <Project>{1379F5AE-42E0-487F-9534-8BCB9EB1AD8F}</Project>
       <Name>NodeGardenLib</Name>
