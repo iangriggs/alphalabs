@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>NodeGarden</title>
+</head>
+<body>
+    <h1>NodeGarden Web Message Relay</h1>
+    <h2>Messages</h2>
+    <div>
+        <div class="inner" id="messages">
+            <ul></ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../Scripts/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.signalR-0.5.3.js"></script>
+    <script type="text/javascript" src="../signalr/hubs"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var hub = $.connection.node;
+
+            hub.received = function (message) {
+                $("#messages ul").append("<li>" + message + "</li>");
+            };
+
+            // Start the connection
+            $.connection.hub.start()
+                .done(function (state) {
+                    // Wire up the button
+                    $("#sndmsg").click(function () {
+                        hub.send($("#msg")[0].value);
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

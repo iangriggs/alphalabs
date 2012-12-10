@@ -1,0 +1,238 @@
+﻿<!DOCTYPE HTML />
+<html>
+<head>
+    <title>Node Garden HTML5 Demo</title>
+    <meta name="viewport" content="width=480,user-scalable=no" />
+    <style type="text/css">
+        body
+        {
+            background-color: #000;
+        }
+    </style>
+    <script type="text/javascript">
+
+        function Node() {
+            this.id = null;
+            this.type = null;
+            this.x = null;
+            this.y = null;
+            this.currentx = null;
+            this.currenty = null;
+        }
+
+        var allNodes = new Array();
+
+        var canvas;
+        var context;
+
+        // These should be overridden by the accent color (passed from the page)
+        var myNodeColor = 'green';
+        var myNodeEdgeColor = 'yellow';
+
+        // Used for detecting touch target size
+        var nodeSize = 50;
+
+        var mouseX = 0, mouseY = 0;
+        var mousePressed = false;
+        var dragging = false;
+
+        var selfX = 0, selfY = 0;
+
+        function randomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function onLoad() {
+            canvas = document.getElementById('theCanvas');
+            context = canvas.getContext('2d');
+
+            setInterval(function () { RedrawGarden(); }, 10);
+        }
+
+        function MouseDown() {
+            mousePressed = true;
+        }
+
+        function MouseUp() {
+            mousePressed = false;
+            dragging = false;
+        }
+
+        function MouseMove(e) {
+            mouseX = e.offsetX;
+            mouseY = e.offsetY;
+        }
+
+        function RedrawGarden() {
+            ClearScreen();
+
+            DetectMovements();
+
+            // update loop
+            for (var i = 0; i < allNodes.length; i++) {
+                if (Math.abs(allNodes[i].currentx - allNodes[i].x) > 0.5
+                 || Math.abs(allNodes[i].currenty - allNodes[i].y) > 0.5) {
+                    var followSpeed = 0.06;
+                    allNodes[i].currentx = parseFloat(allNodes[i].currentx) + parseFloat((allNodes[i].x - allNodes[i].currentx) * followSpeed);
+                    allNodes[i].currenty = parseFloat(allNodes[i].currenty) + parseFloat((allNodes[i].y - allNodes[i].currenty) * followSpeed);
+                } else {
+                    allNodes[i].currentx = allNodes[i].x;
+                    allNodes[i].currenty = allNodes[i].y;
+                }
+            }
+
+            // draw loop - go backwards so draw self node last and it be on top of all the others
+            for (var i = allNodes.length - 1; i >= 0; i--) {
+
+                var clr = 'white';
+                var edgeClr = 'rgba(255,255,255,0.5)';
+
+                if (allNodes[i].type == 'Self') {
+                    clr = myNodeColor;
+                    edgeClr = myNodeEdgeColor;
+                }
+
+                var connectedness = 0;
+
+                for (var j = i + 1; j < allNodes.length; j++) {
+                    var distance = Math.sqrt(Math.pow(allNodes[j].currenty - allNodes[i].currenty, 2)
+                                           + Math.pow(allNodes[j].currentx - allNodes[i].currentx, 2));
+
+                    if (distance > 20 && distance < 300) {
+                        connectedness += 300 - distance;
+
+                        DrawLine(allNodes[i].currentx, allNodes[i].currenty, allNodes[j].currentx, allNodes[j].currenty, Math.round(distance));
+                    }
+                }
+
+                DrawCircle(allNodes[i].currentx, allNodes[i].currenty, Math.round(connectedness), clr, edgeClr);
+            }
+        }
+
+        function ClearScreen() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function DetectMovements() {
+            if (mousePressed) {
+                var left = selfX - nodeSize / 2;
+                var right = selfX + nodeSize / 2;
+                var top = selfY - nodeSize / 2;
+                var bottom = selfY + nodeSize / 2;
+
+                if (dragging || mouseX < right && mouseX > left && mouseY < bottom && mouseY > top) {
+                    dragging = true;
+
+                    for (var i = 0; i < allNodes.length; i++) {
+                        if (allNodes[i].type == 'Self') {
+                            UpdateNode(allNodes[i].id, 'Self', mouseX, mouseY);
+                            allNodes[i].currentx = mouseX;
+                            allNodes[i].currenty = mouseY;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        function DrawCircle(x, y, connectedness, color, edgeColor) {
+            context.beginPath();
+
+            var radius = Map(connectedness, 0, 1500, 10, 30);
+
+            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = color;
+            context.fill();
+            context.lineWidth = Map(connectedness, 0, 1500, 4, 30);
+            context.strokeStyle = edgeColor;
+            context.stroke();
+        }
+
+        function DrawLine(fromX, fromY, toX, toY, connectedness) {
+            context.beginPath();
+            context.moveTo(fromX, fromY);
+            context.lineTo(toX, toY);
+            context.lineWidth = Map(connectedness, 20, 300, 7, 1);
+
+            var alpha = Map(connectedness, 20, 300, 1.0, 0.1);
+            context.strokeStyle = 'rgba(255,255,255,' + alpha + ')';
+            context.stroke();
+        }
+
+        function Map(value, inputRangeMin, inputRangeMax, resultMin, resultMax) {
+            var a = (value - inputRangeMin) / (inputRangeMax - inputRangeMin);
+            var result = resultMin + (a * (resultMax - resultMin));
+
+            if (resultMin < resultMax && result < resultMin) {
+                result = resultMin;
+            }
+            else if (resultMax > resultMin && result > resultMax) {
+                result = resultMax;
+            }
+            else if (resultMin > resultMax && result > resultMin) {
+                result = resultMin;
+            }
+            else if (resultMax < resultMin && result < resultMax) {
+                result = resultMax;
+            }
+
+            return result;
+        }
+
+        function UpdateNode(id, type, x, y) {
+            var found = false;
+
+            for (var i = 0; i < allNodes.length; i++) {
+                if (allNodes[i].id == id) {
+                    allNodes[i].x = x;
+                    allNodes[i].y = y;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (type == 'Self') {
+                selfX = x;
+                selfY = y;
+
+                window.external.Notify(x + ":" + y);
+            }
+
+            if (!found) {
+                var newNode = new Node();
+                newNode.id = id;
+                newNode.type = type;
+                newNode.x = x;
+                newNode.y = y;
+                newNode.currentx = x;
+                newNode.currenty = y;
+
+                allNodes.push(newNode);
+            }
+        }
+
+        function SetAccentColor(r, g, b) {
+            myNodeColor = 'rgba(' + r + ',' + g + ',' + b + ',1)';
+            myNodeEdgeColor = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
+        }
+
+        function NoiseDetected() {
+            myNodeColor = 'red';
+        }
+
+        function ShakeDetected() {
+            myNodeColor = 'blue';
+        }
+
+        function Debug(message) {
+            window.external.Notify("DEBUG:" + message);
+        }
+    </script>
+</head>
+<body onload="onLoad()">
+    <canvas id="theCanvas" width="474" height="800"
+        onmousedown="MouseDown(event);"
+        onmouseup="MouseUp(event);"
+        onmousemove="MouseMove(event);" />
+</body>
+</html>

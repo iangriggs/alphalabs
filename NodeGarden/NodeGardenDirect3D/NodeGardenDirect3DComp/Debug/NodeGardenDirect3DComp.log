@@ -1,0 +1,47 @@
+﻿     0>C:\Projects\alphalabs\NodeGarden\NodeGardenDirect3D\NodeGardenDirect3DComp\NodeGardenDirect3DComp.vcxproj(90,3): warning MSB4011: "C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.Cpp.props" cannot be imported again. It was already imported at "C:\Projects\alphalabs\NodeGarden\NodeGardenDirect3D\NodeGardenDirect3DComp\NodeGardenDirect3DComp.vcxproj (60,3)". This is most likely a build authoring error. This subsequent import will be ignored. 
+     0>C:\Projects\alphalabs\NodeGarden\NodeGardenDirect3D\NodeGardenDirect3DComp\NodeGardenDirect3DComp.vcxproj(92,5): warning MSB4011: "C:\Users\Ian\AppData\Local\Microsoft\MSBuild\v4.0\Microsoft.Cpp.Win32.user.props" cannot be imported again. It was already imported at "C:\Projects\alphalabs\NodeGarden\NodeGardenDirect3D\NodeGardenDirect3DComp\NodeGardenDirect3DComp.vcxproj (62,5)". This is most likely a build authoring error. This subsequent import will be ignored. 
+Build started 06/12/2012 14:22:27.
+     1>Project "C:\Projects\alphalabs\NodeGarden\NodeGardenDirect3D\NodeGardenDirect3DComp\NodeGardenDirect3DComp.vcxproj" on node 5 (Rebuild target(s)).
+     1>FxCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\fxc.exe /nologo /E"main" /T ps_4_0_level_9_3 /Fo "C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\SimplePixelShader.cso" /Zi SimplePixelShader.hlsl 
+         compilation object save succeeded; see C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\SimplePixelShader.cso
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\fxc.exe /nologo /E"main" /T vs_4_0_level_9_3 /Fo "C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\SimpleVertexShader.cso" /Zi SimpleVertexShader.hlsl 
+         compilation object save succeeded; see C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\SimpleVertexShader.cso
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\bin\CL.exe /c /I..\DXTK /AI"C:\Program Files (x86)\Windows Phone Kits\8.0\Windows Metadata" /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _WINRT_DLL /D _WINDLL /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"pch.h" /Fp"Debug\NodeGardenDirect3DComp.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /FU"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\lib\platform.winmd" /FU"C:\Program Files (x86)\Windows Phone Kits\8.0\Windows Metadata\Windows.winmd" /analyze- /errorReport:prompt pch.cpp
+         pch.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\bin\CL.exe /c /I..\DXTK /AI"C:\Program Files (x86)\Windows Phone Kits\8.0\Windows Metadata" /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _WINRT_DLL /D _WINDLL /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"pch.h" /Fp"Debug\NodeGardenDirect3DComp.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /FU"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\lib\platform.winmd" /FU"C:\Program Files (x86)\Windows Phone Kits\8.0\Windows Metadata\Windows.winmd" /analyze- /errorReport:prompt Direct3DInterop.cpp Direct3DBase.cpp Direct3DContentProvider.cpp LineConnection.cpp MyNode.cpp Node.cpp ShadowNode.cpp Sprite.cpp XTKRenderer.cpp
+         Direct3DInterop.cpp
+         Direct3DBase.cpp
+         Direct3DContentProvider.cpp
+         LineConnection.cpp
+         MyNode.cpp
+         Node.cpp
+         ShadowNode.cpp
+         Sprite.cpp
+         XTKRenderer.cpp
+     1>c:\projects\alphalabs\nodegarden\nodegardendirect3d\nodegardendirect3dcomp\xtkrenderer.cpp(185): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\projects\alphalabs\nodegarden\nodegardendirect3d\nodegardendirect3dcomp\xtkrenderer.cpp(194): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\NodeGardenDirect3DComp.dll" /INCREMENTAL /NOLOGO d3d11.lib ..\DXTK\Win32\DirectXTKDebug.lib WindowsPhoneCore.lib RuntimeObject.lib PhoneAppModelHost.lib /NODEFAULTLIB:ole32.lib /MANIFEST:NO /DEBUG /PDB:"C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\NodeGardenDirect3DComp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /WINMD /WINMDFILE:"C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\NodeGardenDirect3DComp.winmd" /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /DLL Debug\Direct3DInterop.obj
+         Debug\Direct3DBase.obj
+         Debug\Direct3DContentProvider.obj
+         Debug\LineConnection.obj
+         Debug\MyNode.obj
+         Debug\Node.obj
+         Debug\pch.obj
+         Debug\ShadowNode.obj
+         Debug\Sprite.obj
+         Debug\XTKRenderer.obj
+            Creating library C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\NodeGardenDirect3DComp.lib and object C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\NodeGardenDirect3DComp.exp
+     1>DirectXTKDebug.lib(CommonStates.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'DirectXTKDebug.lib(CommonStates.obj)' or at 'C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\vc110.pdb'; linking object as if no debug info
+     1>DirectXTKDebug.lib(DDSTextureLoader.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'DirectXTKDebug.lib(DDSTextureLoader.obj)' or at 'C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\vc110.pdb'; linking object as if no debug info
+     1>DirectXTKDebug.lib(pch.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'DirectXTKDebug.lib(pch.obj)' or at 'C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\vc110.pdb'; linking object as if no debug info
+     1>DirectXTKDebug.lib(SpriteBatch.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'DirectXTKDebug.lib(SpriteBatch.obj)' or at 'C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\vc110.pdb'; linking object as if no debug info
+     1>DirectXTKDebug.lib(VertexTypes.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'DirectXTKDebug.lib(VertexTypes.obj)' or at 'C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\vc110.pdb'; linking object as if no debug info
+         NodeGardenDirect3DComp.vcxproj -> C:\Projects\alphalabs\NodeGarden\Debug\NodeGardenDirect3DComp\NodeGardenDirect3DComp.dll
+     1>Done Building Project "C:\Projects\alphalabs\NodeGarden\NodeGardenDirect3D\NodeGardenDirect3DComp\NodeGardenDirect3DComp.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:20.19

@@ -1,0 +1,8 @@
+<StyleCopSettings Version="105">
+  <GlobalSettings>
+    <CollectionProperty Name="RecognizedWords">
+      <Value>fwlink</Value>
+      <Value>resx</Value>
+    </CollectionProperty>
+  </GlobalSettings>
+</StyleCopSettings>
