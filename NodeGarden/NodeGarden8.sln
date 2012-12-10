@@ -48,7 +48,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodeGardenDirect3DComp", "N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeGardenHtml", "NodeGardenHtml\NodeGardenHtml.csproj", "{6DF9B148-ED96-40D1-B63C-CAE3E59405EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primitives2DWP7", "..\..\..\Users\Ian\Downloads\C3.XNA.Primitives2D.r12\Primitives2D\Primitives2DWP7.csproj", "{3D2A19A1-D632-4AC0-8B49-0E5C0BDBBB8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primitives2DWP7", "Primitives2D\Primitives2DWP7.csproj", "{3D2A19A1-D632-4AC0-8B49-0E5C0BDBBB8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
